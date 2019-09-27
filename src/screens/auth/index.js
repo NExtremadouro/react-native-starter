@@ -31,7 +31,7 @@ class AuthLoadingScreen extends Component {
 
 AuthLoadingScreen.propTypes = {
   navigation: PropTypes.object,
-  auth: PropTypes.bool
+  auth: PropTypes.object
 }
 
 const mapDispatchToProps = () => ({

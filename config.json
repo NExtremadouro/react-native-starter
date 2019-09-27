@@ -5,7 +5,8 @@
           "login": "/users/login",
           "users": "/users",
           "metrics": "/metrics",
-          "events": "/events"
+          "events": "/events",
+          "slack": "/slack"
       }
   }
 }
