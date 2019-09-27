@@ -1,5 +1,11 @@
-export const navigationOptions = ({ navigation }) => {
+// export const navigationOptions = ({ navigation }) => {
+//   return {
+//     tabBarVisible: navigation.state.index == 0,
+//   }
+// };
+
+export const navigationOptions = () => {
   return {
-    tabBarVisible: navigation.state.index == 0,
+    tabBarVisible: false,
   }
 };
