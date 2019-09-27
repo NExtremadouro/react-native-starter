@@ -19,7 +19,7 @@ class SecondaryScreen extends Component {
 
     this.state = {
       selectedMood: '',
-      comment: ''
+      comment: null
     }
   }
 
@@ -45,7 +45,7 @@ class SecondaryScreen extends Component {
       timestamp,
       userId: _id,
       value: selectedMood,
-      comment
+      comment: comment || " ",
     }).then(() => {
       this.props.navigation.goBack();
     })
