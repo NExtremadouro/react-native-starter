@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MainScreen from '../screens/main';
 import SecondaryScreen from '../screens/secondary';
 import SettingsScreen from '../screens/settings';
+import PanicButtonScreen from '../screens/panicButton';
 import { navigationOptions } from './config';
 
 import * as IconHelper from '../helpers/icons';
@@ -20,6 +21,16 @@ const HomeStack = createStackNavigator({
   Secondary: {
     screen: SecondaryScreen,
   },
+});
+HomeStack.navigationOptions = navigationOptions;
+
+const PanicStack = createStackNavigator({
+  PanicButton: {
+    screen: PanicButtonScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
 });
 HomeStack.navigationOptions = navigationOptions;
 
@@ -42,6 +53,12 @@ const MainStack = createBottomTabNavigator(
       screen: HomeStack,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => IconHelper.getIcon('home', tintColor),
+      }
+    },
+    Report: {
+      screen: PanicStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => IconHelper.getIcon('alert', tintColor),
       }
     },
     Settings: {
