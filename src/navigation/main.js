@@ -8,6 +8,8 @@ import { navigationOptions } from './config';
 
 import * as IconHelper from '../helpers/icons';
 
+import { styleVars } from '../screens/globalStyles'
+
 const HomeStack = createStackNavigator({
   Main: {
     screen: MainScreen,
@@ -39,15 +41,22 @@ const MainStack = createBottomTabNavigator(
     Home: {
       screen: HomeStack,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => IconHelper.getIcon('home', tintColor),
+        tabBarIcon: ({ tintColor }) => IconHelper.getIcon('home', tintColor),
       }
     },
     Settings: {
       screen: SettingsStack,
       navigationOptions: {
-        tabBarIcon: ({tintColor}) => IconHelper.getIcon('settings', tintColor),
+        tabBarIcon: ({ tintColor }) => IconHelper.getIcon('settings', tintColor),
       }
     }
+  }, {
+  tabBarOptions: {
+    activeTintColor: styleVars.green,
+    style: {
+      backgroundColor: styleVars.darkBlue,
+    },
   }
+}
 )
 export default MainStack;

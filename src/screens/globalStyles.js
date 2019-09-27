@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styleVars = {
     darkBlue: '#2F4858',
+    green: '#00D9AE',
     brightGreen: '#38FD9E'
 };
 
