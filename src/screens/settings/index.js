@@ -19,9 +19,9 @@ class SettingsScreen extends Component {
   render() {
     return (
       <MainLayout>
-        <View style={styles.container}>
-          <TouchableOpacity onPress={this.navigate}>
-            <Text>{'Settings'}</Text>
+        <View style={styles.paddedContainer}>
+          <TouchableOpacity onPress={this.goBack} style={styles.button}>
+            <Text>Logout</Text>
           </TouchableOpacity>
         </View>
       </MainLayout>

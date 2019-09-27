@@ -51,7 +51,7 @@ class PanicButtonScreen extends Component {
                     </Text>
                 </View>
                 <TouchableOpacity onPress={this.goBack} style={styles.button}>
-                <Text>Ok</Text>
+                    <Text>Ok</Text>
                 </TouchableOpacity>
             </View>
             }
