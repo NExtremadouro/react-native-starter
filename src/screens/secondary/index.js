@@ -19,7 +19,8 @@ class SecondaryScreen extends Component {
 
     this.state = {
       selectedMood: '',
-      comment: null
+      comment: null,
+      isSubmitted: false
     }
   }
 
@@ -47,25 +48,58 @@ class SecondaryScreen extends Component {
       value: selectedMood,
       comment: comment || " ",
     }).then(() => {
-      this.props.navigation.goBack();
+      this.setState({ isSubmitted: true });
     })
       .catch(err => alert(err))
+  }
+  
+  goBack = () => {
+    this.props.navigation.goBack();
   }
 
   render() {
     return (
       <MainLayout>
-        <View style={styles.paddedContainer}>
-          <View style={styles.horizontalRow}>
-            <Text style={styles.mainTitle}>
-              Anything you want to add?
-            </Text>
+        {!this.state.isSubmitted ?
+          <View style={styles.paddedContainer}>
+            <View style={styles.horizontalRow}>
+              <Text style={styles.mainTitle}>
+                Anything you want to add?
+              </Text>
+            </View>
+            <TextInput multiline={true} numberOfLines={4} style={styles.input} onChangeText={(comment) => this.setState({ comment })}></TextInput>
+            <TouchableOpacity onPress={this.onSubmitPress} style={styles.button}>
+              <Text>Submit</Text>
+            </TouchableOpacity>
+          </View> :
+          <View style={styles.paddedContainer}>
+            <View style={styles.horizontalRow}>
+              {(this.state.selectedMood === '5' || this.state.selectedMood === '4') &&
+                <Text style={styles.mainTitle}>
+                  {"Great! We love to hear that! We'll use your feedback to improve."}
+                </Text>
+              }
+              {(this.state.selectedMood === '3') &&
+                <Text style={styles.mainTitle}>
+                  {"That's alright! We'll use your feedback to improve."}
+                </Text>
+              }
+              {(this.state.selectedMood === '2' || this.state.selectedMood === '1') &&
+                <Text style={styles.mainTitle}>
+                  {"We're sorry to hear that...We'll use your feedback to improve."}
+                </Text>
+              }
+            </View>
+            <View style={styles.horizontalRow}>
+              <Text style={styles.mainTitle}>
+                {"Thanks!"}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={this.goBack} style={styles.button}>
+              <Text>Go Back</Text>
+            </TouchableOpacity>
           </View>
-          <TextInput multiline={true} numberOfLines={4} style={styles.input} onChangeText={(comment) => this.setState({ comment })}></TextInput>
-          <TouchableOpacity onPress={this.onSubmitPress} style={styles.button}>
-            <Text>Submit</Text>
-          </TouchableOpacity>
-        </View>
+        }
       </MainLayout>
     )
   }
