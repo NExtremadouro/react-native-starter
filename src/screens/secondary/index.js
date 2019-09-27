@@ -52,7 +52,6 @@ class SecondaryScreen extends Component {
       comment: comment || " ",
     }).then(() => {
       this.props.setLoading('postEvent', false);
-      this.props.navigation.goBack();
       this.setState({ isSubmitted: true });
     })
       .catch(err => { console.log(err) })
