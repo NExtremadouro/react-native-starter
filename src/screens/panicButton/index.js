@@ -37,7 +37,7 @@ class PanicButtonScreen extends Component {
     })
       .catch(err => {
         this.props.setLoading('postSlack', false);
-        alert(err)
+        console.log(err);
       });
   }
 

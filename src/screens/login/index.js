@@ -36,7 +36,7 @@ class LoginScreen extends Component {
         this.props.navigation.navigate('Main');
         this.props.setUser(res);
       })
-      .catch(err => alert(err))
+      .catch(err => {console.log(err)})
   }
 
   render() {

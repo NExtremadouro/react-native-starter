@@ -55,7 +55,7 @@ class SecondaryScreen extends Component {
       this.props.navigation.goBack();
       this.setState({ isSubmitted: true });
     })
-      .catch(err => alert(err))
+      .catch(err => { console.log(err) })
   }
 
   goBack = () => {
