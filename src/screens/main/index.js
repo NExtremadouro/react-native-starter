@@ -19,9 +19,8 @@ import {
 } from '../../assets/images';
 
 class MainScreen extends Component {
-
-  navigate = () => {
-    //this.props.navigation.navigate('Secondary', { title: 'Secondary' });
+  navigate = (mood) => {
+    this.props.navigation.navigate('Secondary', { title: 'Secondary', mood });
     alert(JSON.stringify(this.props.navigation));
   }
 
@@ -35,21 +34,21 @@ class MainScreen extends Component {
             </Text>
           </View>
           <View style={styles.horizontalRow}>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('5')}>
               <Image style={styles.moodImage} source={ veryHappy } />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('4')}>
               <Image style={styles.moodImage} source={ happy } />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('3')}>
               <Image style={styles.moodImage} source={ neutral } />
             </TouchableOpacity>
           </View>
           <View style={styles.horizontalRow}>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('2')}>
               <Image style={styles.moodImage} source={ angry } />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('1')}>
               <Image style={styles.moodImage} source={ veryAngry } />
             </TouchableOpacity>
           </View>
