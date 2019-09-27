@@ -5,6 +5,8 @@ import {
   StatusBar,
 } from 'react-native';
 
+import Loading from '../../components/Loading'
+
 import PropTypes from 'prop-types';
 import styles from './styles';
 
@@ -19,6 +21,7 @@ const MainLayout = ({ children }) => (
       >
         {children}
       </ScrollView>
+      <Loading />
     </SafeAreaView>
   </Fragment >
 );
