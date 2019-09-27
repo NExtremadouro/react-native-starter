@@ -6,7 +6,7 @@ import {
   TextInput
 } from 'react-native';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import * as SlackService from '../../services/slack';
 

@@ -5,22 +5,29 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { connect } from 'react-redux'
+
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 import MainLayout from '../../layout/main';
-
+import { userLogout } from '../../redux/actions/auth';
 class SettingsScreen extends Component {
 
   navigate = () => {
     this.props.navigation.navigate('Secondary', { title: 'Secondary' });
   }
 
+  onLogoutPress = () => {
+    this.props.userLogout();
+    this.props.navigation.navigate('Auth');
+  }
+
   render() {
     return (
       <MainLayout>
         <View style={styles.paddedContainer}>
-          <TouchableOpacity onPress={this.goBack} style={styles.button}>
+          <TouchableOpacity onPress={this.onLogoutPress} style={styles.button}>
             <Text>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -31,6 +38,14 @@ class SettingsScreen extends Component {
 
 SettingsScreen.propTypes = {
   navigation: PropTypes.object,
+  userLogout: PropTypes.fun
 }
 
-export default SettingsScreen;
+const mapDispatchToProps = dispatch => ({
+  userLogout: () => dispatch(userLogout())
+});
+
+const mapStateToProps = () => ({
+
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
