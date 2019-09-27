@@ -16,13 +16,23 @@ class PanicButtonScreen extends Component {
         super(props);
     
         this.state = {
-          panicComment: ''
+          panicComment: '',
+          isSubmitted: false
         }
+    }
+
+    onSubmitPress = () => {
+        this.setState({ isSubmitted: true });
+    }
+
+    goBack = () => {
+        this.setState({ isSubmitted: false });
     }
 
     render() {
         return (
         <MainLayout>
+            {!this.state.isSubmitted ?
             <View style={styles.paddedContainer}>
                 <View style={styles.horizontalRow}>
                     <Text style={styles.mainTitle}>
@@ -30,10 +40,21 @@ class PanicButtonScreen extends Component {
                     </Text>
                 </View>
                 <TextInput multiline={true} numberOfLines={4} style={styles.input} onChangeText={(panicComment) => this.setState({panicComment})}></TextInput>
-                <TouchableOpacity onPress={() => console.log(this.state)} style={styles.button}>
+                <TouchableOpacity onPress={this.onSubmitPress} style={styles.button}>
                     <Text>Report</Text>
                 </TouchableOpacity>
+            </View> :
+            <View style={styles.paddedContainer}>
+                <View style={styles.horizontalRow}>
+                    <Text style={styles.mainTitle}>
+                        {"We're sorry to hear that. We'll work to fix this issue."}
+                    </Text>
+                </View>
+                <TouchableOpacity onPress={this.goBack} style={styles.button}>
+                <Text>Ok</Text>
+                </TouchableOpacity>
             </View>
+            }
         </MainLayout>
         )
     }
