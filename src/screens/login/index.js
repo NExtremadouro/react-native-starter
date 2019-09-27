@@ -39,21 +39,29 @@ class LoginScreen extends Component {
     return (
       <MainLayout>
         <View style={styles.paddedContainer}>
-          <View style={styles.input}>
+          <View style={styles.inputContainer}>
             <View style={styles.icon}>
               {IconHelper.getIcon('person', '#cccccc')}
             </View>
             <TextInput
+              autoCapitalize={false}
+              autoCorrect={false}
+              autoCompleteType='email'
+              style={styles.input}
               placeholder={'Email'}
               onChangeText={(text) => { this.setState({ username: text }) }}
             />
           </View>
 
-          <View style={styles.input}>
+          <View style={styles.inputContainer}>
             <View style={styles.icon}>
               {IconHelper.getIcon('lock', '#cccccc')}
             </View>
             <TextInput
+              autoCapitalize={false}
+              autoCorrect={false}
+              autoCompleteType='password'
+              style={styles.input}
               secureTextEntry={true}
               placeholder={'Password'}
               onChangeText={(text) => { this.setState({ password: text }) }}

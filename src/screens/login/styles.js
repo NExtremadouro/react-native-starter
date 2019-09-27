@@ -6,17 +6,26 @@ export default StyleSheet.create({
     ...globalStyles.paddedContainer,
     justifyContent: 'center'
   },
-  input: {
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    borderRadius: 10,
+  inputContainer: {
     height: 60,
-    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     marginVertical: 5,
-    flexDirection: 'row'
+  },
+  input: {
+    flex: 1,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    backgroundColor: '#fff',
+    color: styleVars.darkBlue,
   },
   icon: {
-    marginRight: 10
+    marginHorizontal: 10
   },
   button: {
     height: 60,
