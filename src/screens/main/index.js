@@ -18,27 +18,10 @@ import {
   angry,
   veryAngry
 } from '../../assets/images';
-
-import * as EventService from '../../services/events';
 class MainScreen extends Component {
 
-  navigate = () => {
-    //this.props.navigation.navigate('Secondary', { title: 'Secondary' });
-    const { _id } = this.props.userData;
-    const timestamp = Math.floor(Date.now() / 1000);
-    const userId = _id;
-    const value = 1;
-    const comment = "TEST";
-
-    EventService.postEvent({
-      timestamp,
-      userId,
-      value,
-      comment
-    }).then(res => {
-      alert(JSON.stringify(res))
-    })
-      .catch(err => alert(err))
+  navigate = (mood) => {
+    this.props.navigation.navigate('Secondary', { title: 'Comments', mood });
   }
 
   render() {
@@ -51,21 +34,21 @@ class MainScreen extends Component {
             </Text>
           </View>
           <View style={styles.horizontalRow}>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('5')}>
               <Image style={styles.moodImage} source={veryHappy} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('4')}>
               <Image style={styles.moodImage} source={happy} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('3')}>
               <Image style={styles.moodImage} source={neutral} />
             </TouchableOpacity>
           </View>
           <View style={styles.horizontalRow}>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('2')}>
               <Image style={styles.moodImage} source={angry} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.moodButton} onPress={this.navigate}>
+            <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('1')}>
               <Image style={styles.moodImage} source={veryAngry} />
             </TouchableOpacity>
           </View>
@@ -77,7 +60,6 @@ class MainScreen extends Component {
 
 MainScreen.propTypes = {
   navigation: PropTypes.object,
-  userData: PropTypes.object
 }
 
 const mapDispatchToProps = () => ({
