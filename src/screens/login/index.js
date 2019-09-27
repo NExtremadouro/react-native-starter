@@ -16,6 +16,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import * as IconHelper from '../../helpers/icons';
 
 import * as AuthService from '../../services/auth';
+import { setLoading } from '../../redux/actions/loading';
 class LoginScreen extends Component {
 
   state = {
@@ -25,10 +26,13 @@ class LoginScreen extends Component {
 
   onLoginPress = () => {
 
+    this.props.setLoading('postLogin', true);
+
     AuthService.postLogin({
       email: this.state.username,
     })
       .then(res => {
+        this.props.setLoading('postLogin', false);
         this.props.navigation.navigate('Main');
         this.props.setUser(res);
       })
@@ -79,11 +83,13 @@ class LoginScreen extends Component {
 
 LoginScreen.propTypes = {
   navigation: PropTypes.object,
-  setUser: PropTypes.func
+  setUser: PropTypes.func,
+  setLoading: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => ({
   setUser: (userData) => dispatch(setUser(userData)),
+  setLoading: (process, isLoading) => dispatch(setLoading(process, isLoading))
 });
 
 const mapStateToProps = () => ({
