@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux'
+import { setUser }  from '../../redux/actions/auth'
 
 import PropTypes from 'prop-types';
 
@@ -27,7 +29,8 @@ class LoginScreen extends Component {
       email: this.state.username,
     })
       .then(res => {
-        this.props.navigation.navigate('Main', { userData: res });
+        this.props.navigation.navigate('Main');
+        this.props.setUser(res);
       })
       .catch(err => alert(err))
   }
@@ -68,6 +71,14 @@ class LoginScreen extends Component {
 
 LoginScreen.propTypes = {
   navigation: PropTypes.object,
+  setUser: PropTypes.func
 }
 
-export default LoginScreen;
+const mapDispatchToProps = dispatch => ({
+  setUser: (userData) => dispatch(setUser(userData)),
+});
+
+const mapStateToProps = () => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
