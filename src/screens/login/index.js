@@ -13,6 +13,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import * as IconHelper from '../../helpers/icons';
 
+import * as AuthService from '../../services/auth';
 class LoginScreen extends Component {
 
   state = {
@@ -21,7 +22,14 @@ class LoginScreen extends Component {
   }
 
   onLoginPress = () => {
-    this.props.navigation.navigate('Main');
+
+    AuthService.postLogin({
+      email: this.state.username,
+    })
+      .then(res => {
+        this.props.navigation.navigate('Main', { userData: res });
+      })
+      .catch(err => alert(err))
   }
 
   render() {
