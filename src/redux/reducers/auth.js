@@ -9,6 +9,7 @@ export default function auth(state = initialState, { type, payload }) {
     case SET_USER:
       return {
         ...state,
+        isAuth: true,
         userData: payload,
       }
     default:
