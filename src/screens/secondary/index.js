@@ -13,6 +13,7 @@ import styles from './styles';
 import MainLayout from '../../layout/main';
 
 import * as EventService from '../../services/events';
+import { setLoading } from '../../redux/actions/loading';
 class SecondaryScreen extends Component {
   constructor(props) {
     super(props);
@@ -41,12 +42,15 @@ class SecondaryScreen extends Component {
 
     const timestamp = Math.floor(Date.now() / 1000);
 
+    this.props.setLoading('postEvent', true);
+
     EventService.postEvent({
       timestamp,
       userId: _id,
       value: selectedMood,
       comment: comment || " ",
     }).then(() => {
+      this.props.setLoading('postEvent', false);
       this.props.navigation.goBack();
     })
       .catch(err => alert(err))
@@ -74,11 +78,13 @@ class SecondaryScreen extends Component {
 
 SecondaryScreen.propTypes = {
   navigation: PropTypes.object,
-  userData: PropTypes.object
+  userData: PropTypes.object,
+  setLoading: PropTypes.func
 }
 
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = dispatch => ({
+  setLoading: (process, isLoading) => dispatch(setLoading(process, isLoading))
 });
 
 const mapStateToProps = state => ({
