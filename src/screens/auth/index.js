@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 class AuthLoadingScreen extends Component {
 
   componentDidMount = () => {
-    //const userToken = null;//await AsyncStorage.getItem('userToken');
     this.props.navigation.navigate(this.props.auth.isAuth ? 'Main' : 'Login');
   }
 
