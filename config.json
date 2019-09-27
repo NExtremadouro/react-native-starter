@@ -1,9 +1,10 @@
 {
   "api": {
-      "key": "NSO7DST4DWJEW161",
-      "baseUrl": "http://localhost:8080",
+      "baseUrl": "http://76580a2c.ngrok.io",
       "endpoints": {
-          "test": "test"
+          "login": "/users/login",
+          "users": "/users",
+          "metrics": "/metrics"
       }
   }
 }
