@@ -13,7 +13,8 @@ import MainLayout from '../../layout/main';
 class MainScreen extends Component {
 
   navigate = () => {
-    this.props.navigation.navigate('Secondary', { title: 'Secondary' });
+    //this.props.navigation.navigate('Secondary', { title: 'Secondary' });
+    alert(JSON.stringify(this.props.navigation));
   }
 
   render() {
@@ -21,7 +22,7 @@ class MainScreen extends Component {
       <MainLayout>
         <View style={styles.container}>
           <TouchableOpacity onPress={this.navigate}>
-            <Text>{'Navigate'}</Text>
+            <Text>{'Feedback'}</Text>
           </TouchableOpacity>
         </View>
       </MainLayout>
