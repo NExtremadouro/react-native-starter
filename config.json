@@ -4,7 +4,8 @@
       "endpoints": {
           "login": "/users/login",
           "users": "/users",
-          "metrics": "/metrics"
+          "metrics": "/metrics",
+          "events": "/events"
       }
   }
 }

@@ -15,11 +15,18 @@ const HomeStack = createStackNavigator({
   Main: {
     screen: MainScreen,
     navigationOptions: {
-      header: null
+      header: null,
     }
   },
   Secondary: {
     screen: SecondaryScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: styleVars.darkBlue,
+      },
+      headerTitleStyle: { color: '#FFF' },
+      headerTintColor: styleVars.brightGreen
+    }
   },
 });
 HomeStack.navigationOptions = navigationOptions;

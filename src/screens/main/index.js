@@ -5,23 +5,23 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+import { connect } from 'react-redux'
 
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 import MainLayout from '../../layout/main';
-import { 
-  veryHappy, 
-  happy, 
-  neutral, 
-  angry, 
+import {
+  veryHappy,
+  happy,
+  neutral,
+  angry,
   veryAngry
 } from '../../assets/images';
-
 class MainScreen extends Component {
+
   navigate = (mood) => {
-    this.props.navigation.navigate('Secondary', { title: 'Secondary', mood });
-    alert(JSON.stringify(this.props.navigation));
+    this.props.navigation.navigate('Secondary', { title: 'Comments', mood });
   }
 
   render() {
@@ -35,21 +35,21 @@ class MainScreen extends Component {
           </View>
           <View style={styles.horizontalRow}>
             <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('5')}>
-              <Image style={styles.moodImage} source={ veryHappy } />
+              <Image style={styles.moodImage} source={veryHappy} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('4')}>
-              <Image style={styles.moodImage} source={ happy } />
+              <Image style={styles.moodImage} source={happy} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('3')}>
-              <Image style={styles.moodImage} source={ neutral } />
+              <Image style={styles.moodImage} source={neutral} />
             </TouchableOpacity>
           </View>
           <View style={styles.horizontalRow}>
             <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('2')}>
-              <Image style={styles.moodImage} source={ angry } />
+              <Image style={styles.moodImage} source={angry} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.moodButton} onPress={() => this.navigate('1')}>
-              <Image style={styles.moodImage} source={ veryAngry } />
+              <Image style={styles.moodImage} source={veryAngry} />
             </TouchableOpacity>
           </View>
         </View>
@@ -62,4 +62,11 @@ MainScreen.propTypes = {
   navigation: PropTypes.object,
 }
 
-export default MainScreen;
+const mapDispatchToProps = () => ({
+});
+
+const mapStateToProps = state => ({
+  userData: state.auth.userData
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

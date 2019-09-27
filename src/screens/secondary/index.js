@@ -5,19 +5,21 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux'
 
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 import MainLayout from '../../layout/main';
 
+import * as EventService from '../../services/events';
 class SecondaryScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedMood: '',
-      comment: ''
+      comment: null
     }
   }
 
@@ -33,6 +35,23 @@ class SecondaryScreen extends Component {
     };
   };
 
+  onSubmitPress = () => {
+    const { selectedMood, comment } = this.state;
+    const { _id } = this.props.userData;
+
+    const timestamp = Math.floor(Date.now() / 1000);
+
+    EventService.postEvent({
+      timestamp,
+      userId: _id,
+      value: selectedMood,
+      comment: comment || " ",
+    }).then(() => {
+      this.props.navigation.goBack();
+    })
+      .catch(err => alert(err))
+  }
+
   render() {
     return (
       <MainLayout>
@@ -42,8 +61,8 @@ class SecondaryScreen extends Component {
               Anything you want to add?
             </Text>
           </View>
-          <TextInput multiline={true} numberOfLines={4} style={styles.input} onChangeText={(comment) => this.setState({comment})}></TextInput>
-          <TouchableOpacity onPress={() => console.log(this.state)} style={styles.button}>
+          <TextInput multiline={true} numberOfLines={4} style={styles.input} onChangeText={(comment) => this.setState({ comment })}></TextInput>
+          <TouchableOpacity onPress={this.onSubmitPress} style={styles.button}>
             <Text>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -55,6 +74,15 @@ class SecondaryScreen extends Component {
 
 SecondaryScreen.propTypes = {
   navigation: PropTypes.object,
+  userData: PropTypes.object
 }
 
-export default SecondaryScreen;
+
+const mapDispatchToProps = () => ({
+});
+
+const mapStateToProps = state => ({
+  userData: state.auth.userData
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SecondaryScreen);
