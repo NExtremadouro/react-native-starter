@@ -27,30 +27,29 @@ class LoginScreen extends Component {
   render() {
     return (
       <MainLayout>
-        <View style={styles.container}>
-
+        <View style={styles.paddedContainer}>
           <View style={styles.input}>
             <View style={styles.icon}>
-              {IconHelper.getIcon('person', 'blue')}
+              {IconHelper.getIcon('person', '#cccccc')}
             </View>
             <TextInput
-              placeholder={'username'}
+              placeholder={'Email'}
               onChangeText={(text) => { this.setState({ username: text }) }}
             />
           </View>
 
           <View style={styles.input}>
             <View style={styles.icon}>
-              {IconHelper.getIcon('lock', 'blue')}
+              {IconHelper.getIcon('lock', '#cccccc')}
             </View>
             <TextInput
               secureTextEntry={true}
-              placeholder={'passwrod'}
+              placeholder={'Password'}
               onChangeText={(text) => { this.setState({ password: text }) }}
             />
           </View>
 
-          <TouchableOpacity onPress={this.onLoginPress}>
+          <TouchableOpacity onPress={this.onLoginPress} style={styles.button}>
             <Text>{'Login'}</Text>
           </TouchableOpacity>
         </View>
