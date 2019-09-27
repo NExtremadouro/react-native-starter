@@ -1,21 +1,29 @@
 import { StyleSheet } from 'react-native';
+import globalStyles, { styleVars } from '../globalStyles';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  paddedContainer: {
+    ...globalStyles.paddedContainer,
+    justifyContent: 'center'
   },
-
   input: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'grey',
-    padding: 8,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    height: 60,
+    backgroundColor: '#ffffff',
+    marginVertical: 5,
+    flexDirection: 'row'
   },
   icon: {
-    margin: 8
+    marginRight: 10
+  },
+  button: {
+    height: 60,
+    backgroundColor: styleVars.brightGreen,
+    borderRadius: 10,
+    marginVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
