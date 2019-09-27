@@ -6,8 +6,6 @@ import AuthStack from './auth';
 export const RootStack = createAppContainer(
   createSwitchNavigator(
     {
-
-      //AuthLoading: () => (null),
       Auth: {
         screen: AuthStack,
       },
@@ -15,7 +13,6 @@ export const RootStack = createAppContainer(
       Main: {
         screen: MainStack,
       },
-
     })
 );
 export default RootStack;

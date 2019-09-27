@@ -1,6 +1,6 @@
 {
   "api": {
-      "baseUrl": "http://76580a2c.ngrok.io",
+      "baseUrl": "https://hd-backend.azurewebsites.net",
       "endpoints": {
           "login": "/users/login",
           "users": "/users",
