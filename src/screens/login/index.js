@@ -4,8 +4,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { connect } from 'react-redux'
-import { setUser }  from '../../redux/actions/auth'
+import { connect } from 'react-redux';
+import { setUser } from '../../redux/actions/auth'
 
 import PropTypes from 'prop-types';
 
